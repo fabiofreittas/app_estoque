@@ -19,6 +19,8 @@ include 'cabecalho.php';?>
     include  '../vendor/autoload.php';
     if ($_GET['msg']==1)
         echo "<div class='alert alert-success'>Produto excluido com sucesso!</div>";
+if ($_GET['msg']==2)
+        echo "<div class='alert alert-success'>Produto alterado com sucesso!</div>";
     $p = new \App\Model\Produto();
     isset($_GET['descricao']) ? $p->setDescricao($_GET['descricao']) : $p->setDescricao("");
 
@@ -46,7 +48,7 @@ include 'cabecalho.php';?>
                     echo "<td>".\App\Helper\Moeda::get($produto->getQuantidade())."</td>";
                     echo "<td>".\App\Helper\Moeda::get($produto->getValor())."</td>";
                     echo "<td>".\App\Helper\Data::get($produto->getValidade())."</td>";
-                    echo "<td><a class='btn btn-warning' href='produto-alterar.php?id{$produto->getId()}'> Alterar</a></td>";
+                    echo "<td><a class='btn btn-warning' href='produto-alterar.php?id={$produto->getId()}'> Alterar</a></td>";
                     echo "<td><a class='btn btn-danger' href='produto-excluir.php?id={$produto->getId()}'> Excluir</a></td>";
                     echo "</tr>";
                 }
