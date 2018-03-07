@@ -4,6 +4,10 @@ include 'cabecalho.php';?>
 <h1>Cadastrar novo produto</h1>
 <?php
     include '../vendor/autoload.php';
+
+    $uDAO = new \App\DAO\UsuarioDAO();
+    $uDAO->verificar();
+
     if ($_POST){
         $p = new \App\Model\Produto();
         $p->setDescricao($_POST{'descricao'});

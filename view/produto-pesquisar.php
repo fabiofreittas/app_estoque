@@ -17,6 +17,10 @@ include 'cabecalho.php';?>
 </form>
 <?php
     include  '../vendor/autoload.php';
+
+    $uDAO = new \App\DAO\UsuarioDAO();
+    $uDAO->verificar();
+
     if ($_GET['msg']==1)
         echo "<div class='alert alert-success'>Produto excluido com sucesso!</div>";
 if ($_GET['msg']==2)

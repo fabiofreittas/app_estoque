@@ -5,6 +5,9 @@ include 'cabecalho.php';?>
 <?php
     include '../vendor/autoload.php';
 
+    $uDAO = new \App\DAO\UsuarioDAO();
+    $uDAO->verificar();
+
     if ($_POST) {
         $p2 = new \App\Model\Produto();
         $p2->setId($_POST['id']);
@@ -17,8 +20,6 @@ include 'cabecalho.php';?>
         if ($p2DAO->alterar($p2))
             header("Location: produto-pesquisar.php?msg=2");
     }
-
-
 
     $p= new \App\Model\Produto();
     isset($_GET) ? $p->setId($_GET['id']) : $p->setId($_POST['id']) ;
